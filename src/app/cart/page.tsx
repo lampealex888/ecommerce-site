@@ -4,17 +4,21 @@ import CartEntry from "./CartEntry";
 import { SetProductQuantity } from "./action";
 
 export const metadata = {
-  title: "Your Cart - The Su Shop"
-}
+  title: "Your Cart - The Su Shop",
+};
 
 export default async function CartPage() {
-const cart = await getCart();
+  const cart = await getCart();
 
   return (
     <div>
       <h1 className="mb-6 text-3xl font-bold">Shopping Cart</h1>
-      {cart?.items.map(cartItem => (
-        <CartEntry cartItem={cartItem} key={cartItem.id} setProductQuantity={SetProductQuantity}/>
+      {cart?.items.map((cartItem) => (
+        <CartEntry
+          cartItem={cartItem}
+          key={cartItem.id}
+          setProductQuantity={SetProductQuantity}
+        />
       ))}
       {!cart?.items.length && <p>Your cart is empty.</p>}
       <div className="flex flex-col items-end sm:items-center">
